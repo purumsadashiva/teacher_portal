@@ -1,0 +1,126 @@
+
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+    .landing-page {
+      background-size: contain;
+    }
+  
+    .btn-box {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .viewtable-btn {
+      width: 100%;
+      margin-top: 180px;
+      margin-right: 0;
+    }
+  }
+  
+  body {
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+  }
+  .btns {
+    display: flex;
+    justify-content: space-between;
+  }
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  
+  .table-div {
+    margin-top: 20px;
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 8px;
+  }
+  
+  th,
+  td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  } 
+  
+  th {
+    background-color: #00d764;
+    color: white;
+  }
+  
+  /* CSS for mobile devices */
+  @media only screen and (max-width: 600px) {
+    .main-div {
+      padding: 10px;
+    }
+  
+    .container {
+      max-width: 100%;
+    }
+  
+    .table-div {
+      overflow-x: auto;
+    }
+  
+    table {
+      width: 100%;
+      font-size: 14px;
+    }
+  
+    th,
+    td {
+      padding: 10px;
+    }
+  }
+  
+  /* CSS for tablets */
+  @media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .table-div {
+      overflow-x: auto;
+    }
+  }
+  
+  /* CSS for desktops and larger screens */
+  @media only screen and (min-width: 1025px) {
+    .container {
+      max-width: 1200px;
+    }
+  
+    .table-div {
+      overflow-x: auto;
+    }
+  }
+  .popup-message {
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #00d764;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .popup-message p {
+    margin: 0;
+  }
+  
