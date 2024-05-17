@@ -373,6 +373,8 @@ function TablePage() {
             variant="outlined"
             value={formData.Email}
             onChange={handleFormChange}
+            style={{ marginRight: "10px", marginBottom: "10px" }}
+
           />
           <TextField
             type="text"

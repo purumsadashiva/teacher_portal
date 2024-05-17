@@ -1,4 +1,3 @@
-// reducers.js
 import {
     ADD_STUDENT,
     UPDATE_STUDENT,
