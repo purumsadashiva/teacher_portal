@@ -80,7 +80,6 @@ function TablePage() {
   };
 
   const handleAction = () => {
-    // Perform action (add or update)
     if (typeof formData.Name !== "string") {
       setSuccessMessage("Please enter a valid name");
       return;
@@ -122,7 +121,6 @@ function TablePage() {
       dispatch(updateStudent(existingStudent, updatedStudent));
       setSuccessMessage("Student marks updated successfully");
     } else {
-      // Add new student
       dispatch(addStudent(formData));
       setSuccessMessage("Student added successfully");
     }
