@@ -32,7 +32,6 @@ import { auth } from "../../firebase";
 function TablePage() {
   const dispatch = useDispatch();
   const students = useSelector((state) => state.students);
-  console.log(students);
 
   const [isFormOpen, setFormOpen] = useState(false);
   const [formMode, setFormMode] = useState("create");
@@ -81,19 +80,6 @@ function TablePage() {
   };
 
   const handleAction = () => {
-    if (formMode === "update" && formIndex !== null) {
-      // Check if any changes have been made
-      const hasChanges = Object.keys(students[formIndex]).some(
-        (key) => students[formIndex][key] !== formData[key]
-      );
-
-      if (!hasChanges) {
-        setSuccessMessage("No changes made.");
-        closeForm();
-        return;
-      }
-    }
-
     // Perform action (add or update)
     if (typeof formData.Name !== "string") {
       setSuccessMessage("Please enter a valid name");
@@ -121,12 +107,24 @@ function TablePage() {
       return;
     }
 
-    if (formMode === "create") {
+    const existingStudent = students.findIndex(
+      (student) =>
+        student.Name === formData.Name &&
+        student.Email === formData.Email &&
+        student.Subject === formData.Subject
+    );
+
+    if (existingStudent !== -1) {
+      const updatedStudent = {
+        ...students[existingStudent],
+        Marks: parseInt(students[existingStudent].Marks) + marks,
+      };
+      dispatch(updateStudent(existingStudent, updatedStudent));
+      setSuccessMessage("Student marks updated successfully");
+    } else {
+      // Add new student
       dispatch(addStudent(formData));
       setSuccessMessage("Student added successfully");
-    } else if (formMode === "update" && formIndex !== null) {
-      dispatch(updateStudent(formIndex, formData));
-      setSuccessMessage("Student updated successfully");
     }
     closeForm();
   };
@@ -373,8 +371,6 @@ function TablePage() {
             variant="outlined"
             value={formData.Email}
             onChange={handleFormChange}
-            style={{ marginRight: "10px", marginBottom: "10px" }}
-
           />
           <TextField
             type="text"
